@@ -16,10 +16,16 @@ class MealsController extends Controller
         $data->save();
         return redirect()->back();
     }
+
     public function read(){
         $data=meals::all();
 
         return view("welcome", ['data' => $data]);
 
+    }
+    public function delete($id){
+        $data=meals::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 }
