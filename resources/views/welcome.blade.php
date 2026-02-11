@@ -13,6 +13,19 @@
 </head>
 
 <body class="bg-gray-50 p-6 " >
+  
+
+  <form action="{{ url('/logout') }} " method="POST">
+    @csrf
+    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded absolute top-4 left-4">
+        تسجيل الخروج
+    </button>
+  
+  </form>
+
+
+
+
 
    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
     تطبيق تتبع الوجبات
