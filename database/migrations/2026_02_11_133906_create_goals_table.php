@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meals', function (Blueprint $table) {
+        Schema::create('goals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->double('calories');
-            $table->double('protien');
-            $table->timestamps();
+            $table->double('calories_goal');
+            $table->double('protien_goal');
+            $table->double('carbs_goal')->nullable();
+            
 
+            $table->timestamps();
             
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meals');
+        Schema::dropIfExists('goals');
     }
 };

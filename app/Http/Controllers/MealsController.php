@@ -13,18 +13,19 @@ class MealsController extends Controller
         $data->name = $request->name;
         $data->calories = $request->calories;
         $data->protien = $request->protien;
+        $data->user_id = auth()->id();
         $data->save();
         return redirect()->back();
     }
 
     public function read(){
-        $data=meals::all();
+        $data=meals::where('user_id', auth()->id())->get();
 
         return view("welcome", ['data' => $data]);
 
     }
     public function delete($id){
-        $data=meals::find($id);
+        $data=meals::where('user_id', auth()->id())->where('id', $id)->first();
         $data->delete();
         return redirect()->back();
     }
