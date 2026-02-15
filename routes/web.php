@@ -12,6 +12,15 @@ Route::get('/', function () {
 });
 
 */
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+});
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
