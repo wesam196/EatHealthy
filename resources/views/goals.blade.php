@@ -12,6 +12,12 @@
     
 الهدف اليومي
 
+ <a href="{{url('/')}}" class="bg-blue-500 text-white px-4 py-2 rounded absolute top-4 right-4">
+    الرئيسية
+  </a>
+  <a href="{{url ('/goals') }}" class="bg-green-500 text-white px-4 py-2 rounded absolute top-16 right-4">
+    الأهداف
+  </a>
 <!-- create cards to show the goals -->
 <div class="flex justify-center mt-10">
     <div class="bg-white rounded-lg shadow-md p-6 w-full max-w-md">

@@ -24,7 +24,12 @@
   </form>
 
 
-
+  <a href="{{url('/')}}" class="bg-blue-500 text-white px-4 py-2 rounded absolute top-4 right-4">
+    الرئيسية
+  </a>
+  <a href="{{url ('/goals') }}" class="bg-green-500 text-white px-4 py-2 rounded absolute top-16 right-4">
+    الأهداف
+  </a>
 
 
    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
