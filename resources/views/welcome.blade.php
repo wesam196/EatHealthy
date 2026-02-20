@@ -14,7 +14,10 @@
 
 <body class="bg-gray-50 p-6 " >
   
-
+@auth
+    {{ auth()->user()->name }} مرحباً بك في تطبيق تتبع الوجبات
+@endauth
+<br/><br/><br/><br/>
   <form action="{{ url('/logout') }} " method="POST">
     @csrf
     <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded absolute top-4 left-4">
@@ -24,10 +27,10 @@
   </form>
 
 
-  <a href="{{url('/')}}" class="bg-blue-500 text-white px-4 py-2 rounded absolute top-4 right-4">
+  <a href="{{url('/')}}" class="bg-blue-500 text-white px-4 py-2 rounded  top-4 right-4">
     الرئيسية
   </a>
-  <a href="{{url ('/goals') }}" class="bg-green-500 text-white px-4 py-2 rounded absolute top-16 right-4">
+  <a href="{{url ('/goals') }}" class="bg-green-500 text-white px-4 py-2 rounded  top-16 right-4">
     الأهداف
   </a>
 
