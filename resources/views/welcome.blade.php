@@ -107,17 +107,17 @@
 
 
     <tbody>
-     @foreach ($data as $data)
+     @foreach ($data as $meals)
         
 
   
     
         <tr>
-            <td class="border px-4 py-2">{{$data->name}}</td>
-            <td class="border px-4 py-2">{{$data->calories}}</td>
-            <td class="border px-4 py-2">{{$data->protien}}</td>
+            <td class="border px-4 py-2">{{$meals->name}}</td>
+            <td class="border px-4 py-2">{{$meals->calories}}</td>
+            <td class="border px-4 py-2">{{$meals->protien}}</td>
             <td class="border px-4 py-2">
-                <a href="{{url('/deleteMeal/'.$data->id)}}" class="bg-red-500 text-white px-4 py-2 rounded">حذف</a>
+                <a href="{{url('/deleteMeal/'.$meals->id)}}" class="bg-red-500 text-white px-4 py-2 rounded">حذف</a>
             </td>
 
         </tr>
@@ -126,13 +126,26 @@
       @endforeach
         <tr>
             <td class="border px-4 py-2 font-bold">المجموع</td>
-            <td class="border px-4 py-2 font-bold">{{ $data->sum('calories') }}</td>
-            <td class="border px-4 py-2 font-bold">{{ $data->sum('protien') }}</td>
+            @if ($data->sum('calories')  > $goal->calories_goal)
+                <td class="border px-4 py-2 font-bold text-red-500">{{ $data->sum('calories') }} / {{ $goal->calories_goal }}</td>
+              
+            @endif
+
+              @if ($data->sum('calories')  <= $goal->calories_goal)
+                  <td class="border px-4 py-2 font-bold text-green-500">{{ $data->sum('calories') }} / {{ $goal->calories_goal }}</td>
+              @endif
+
+              @if ($data->sum('protien')  > $goal->protien_goal)
+                  <td class="border px-4 py-2 font-bold text-red-500">{{ $data->sum('protien') }} / {{ $goal->protien_goal }}</td>
+              @endif
+              @if ($data->sum('protien')  <= $goal->protien_goal)
+                  <td class="border px-4 py-2 font-bold text-green-500">{{ $data->sum('protien') }} / {{ $goal->protien_goal }}</td>
+              @endif
+
         </tr>
      
     </tbody>
 </table>
-
 
 
 

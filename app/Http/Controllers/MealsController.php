@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\meals;
-
+use App\Models\goal;
 class MealsController extends Controller
 {
     //crud
@@ -20,8 +20,8 @@ class MealsController extends Controller
 
     public function read(){
         $data=meals::where('user_id', auth()->id())->get();
-
-        return view("welcome", ['data' => $data]);
+        $goal=goal::where('user_id', auth()->id())->first();
+        return view("welcome", ['data' => $data , 'goal' => $goal]);
 
     }
     public function delete($id){
