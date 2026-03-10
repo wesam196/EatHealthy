@@ -25,7 +25,7 @@ class MealsController extends Controller
     $response = Http::withHeaders([
         'Content-Type' => 'application/json',
         'X-goog-api-key' => env('GOOGLE_GEMINI_API_KEY'),
-    ])->post('https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent', [
+    ])->post('https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent', [
         "contents" => [
             [
                 "parts" => [
@@ -58,7 +58,7 @@ $result = [
     'carbs' => isset($carbsMatch[1]) ? (int)$carbsMatch[1] : null,
 ];
 
-//return $result;
+//return $text;
 
     return redirect()->back()->with('generatedMeal', $result)->withInput();
 }
