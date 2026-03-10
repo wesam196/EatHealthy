@@ -32,7 +32,9 @@ Route::middleware([
     Route::get('/',[MealsController::class,'read']);
     Route::post('/addMeal',[MealsController::class,'create']);
     Route::get('/deleteMeal/{id}', [MealsController::class,'delete']);
-    
+    Route::get('/generateMeals', [MealsController::class, 'generate']);
+
+
     Route::get('/goals', [GoalController::class,'show']);
     Route::post('/updateGoals', [GoalController::class,'create']);
     

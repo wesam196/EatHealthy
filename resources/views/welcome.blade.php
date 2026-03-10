@@ -41,11 +41,15 @@
    <img src="logo.png" alt="" class="mx-auto mb-6 w-32 h-32">
    
     <div class="flex justify-center mb-6">
+      
      <form class=" p-6 rounded-2xl shadow-md w-full max-w-md space-y-4" action="{{url('/addMeal')}}" method="POST" enctype ="multipart/form-data">
         @csrf
         <h2 class="text-2xl font-semibold text-gray-800 text-center">
      اضف وجبة جديدة
     </h2>
+
+   
+
 
     <!-- Name -->
     <div>
@@ -90,10 +94,87 @@
         اضف الوجبة
     </button>
   </form>
+
+  <div class=" p-6 rounded-2xl shadow-md w-full max-w-md space-y-4">
+ <form action="{{ url('/generateMeals') }}" method="get">
+  
+
+      @csrf
+  <br/>
+      <h2 class="text-2xl font-semibold text-gray-800 text-center">
+     توليد وجبة باستخدام الذكاء الاصطناعي
+    </h2>
+      <textarea name="describe" maxlength="200" cols="5" rows="3"  class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder=" اكتب وصف دقيق للوجبة، زيادة الدقة تعطي نتائج أفضل"></textarea>
+      <input type="submit" name="" id="generateMeal" value="توليد الوجبة" class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition">
+    </form>
+    
+    @php
+    $generatedMeal = session('generatedMeal');
+@endphp
+
+@isset($generatedMeal)
+   
+    
+    <form class=" p-6  max-w-md space-y-4" action="{{url('/addMeal')}}" method="POST" enctype ="multipart/form-data">
+        @csrf
+
+    <!-- Name -->
+    <div>
+      
+      <input
+        type="text"
+        name="name"
+        value="{{ old('describe') }}"
+        style="display: none;"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        السعرات
+      </label>
+      <input
+        type="text"
+        name="calories"
+        class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value="{{ $generatedMeal['calories']  }}"
+        />
+    </div>
+
+    
+        <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">
+            البروتين
+        </label>
+        <input
+            type="text"
+            name="protien"
+            class="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value="{{ $generatedMeal['protein'] }}"
+        />
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      class="w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition"
+    >
+        اضف الوجبة
+    </button>
+  </form>
+
+@endisset
+</div>
+
+
+
     </div>
 
 
 <br/>
+
+
+
 
     <table class="min-w-full border border-gray-300">
     <thead class="bg-gray-100">
@@ -146,7 +227,6 @@
      
     </tbody>
 </table>
-
 
 
 
