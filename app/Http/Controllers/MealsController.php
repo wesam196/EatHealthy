@@ -59,7 +59,6 @@ $result = [
 ];
 
 //return $text;
-
     return redirect()->back()->with('generatedMeal', $result)->withInput();
 }
 

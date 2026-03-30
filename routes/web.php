@@ -14,6 +14,7 @@ Route::get('/', function () {
 */
 
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify', function () {
         return view('auth.verify-email');
@@ -38,4 +39,9 @@ Route::middleware([
     Route::get('/goals', [GoalController::class,'show']);
     Route::post('/updateGoals', [GoalController::class,'create']);
     
+
+    Route::get('/test', function () {
+    return view('test');
+});
+
 });
